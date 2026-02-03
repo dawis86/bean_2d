@@ -3,12 +3,14 @@ using UnityEngine;
 public class SFXScript : MonoBehaviour
 {
     public AudioSource sFXSource;
-    public AudioClip[] audioClips;
+    public AudioClip[] audioClip;
 
     public void PlaySFX(int ix) {
+        if (ix < 0 || ix >= audioClip.Length) return;
+
         if(sFXSource.isPlaying)
             sFXSource.Stop();
 
-        sFXSource.PlayOneShot(audioClips[ix]);
+        sFXSource.PlayOneShot(audioClip[ix]);
     }
 }
